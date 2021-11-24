@@ -1,13 +1,13 @@
 package views.factory;
 
 import views.screens.LoginView;
-import views.screens.MainView;
+import views.screens.ProductsView;
 
 public class ClientFactoryImpl implements ClientFactory{
 
     LoginView loginView = new LoginView();
 
-    MainView mainView = new MainView();
+    ProductsView mainView = new ProductsView();
 
     @Override
     public LoginView getLoginView() {
@@ -15,5 +15,5 @@ public class ClientFactoryImpl implements ClientFactory{
     }
 
     @Override
-    public MainView getMainView() { return mainView; }
+    public ProductsView getMainView() { return mainView; }
 }

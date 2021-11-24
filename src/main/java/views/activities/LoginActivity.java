@@ -7,10 +7,13 @@ import views.places.LoginPlace;
 import views.places.MainPlace;
 import views.places.kernels.Place;
 import views.screens.LoginView;
+import views.validator.IValidator;
+import views.validator.ValidatorImpl;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginActivity implements Activity,LoginView.Presenter {
 
@@ -19,6 +22,8 @@ public class LoginActivity implements Activity,LoginView.Presenter {
     String name;
 
     LoginView view;
+
+    IValidator iValidator = new ValidatorImpl();
 
     public LoginActivity(LoginPlace loginPlace, ClientFactory clientFactory) {
         this.factory = clientFactory;
@@ -43,14 +48,8 @@ public class LoginActivity implements Activity,LoginView.Presenter {
 
     @Override
     public void start() {
+
         view = this.factory.getLoginView();
-
-        view.setTitle("Login Form");
-        view.setVisible(true);
-        view.setBounds(10,10,370,600);
-        view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        view.setResizable(false);
-
         view.setPresenter(this);
         bindEvents();
 
@@ -58,6 +57,7 @@ public class LoginActivity implements Activity,LoginView.Presenter {
 
     private void bindEvents() {
         loginButtonEvent();
+        resetButtonEvent();
     }
 
     @Override
@@ -68,13 +68,13 @@ public class LoginActivity implements Activity,LoginView.Presenter {
 
     @Override
     public void loginButtonEvent() {
-        factory.getLoginView().getLoginButton().addActionListener(
+        view.getLoginButton().addActionListener(
 
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
-                        if (e.getSource() == factory.getLoginView().getLoginButton()) {
+                        if (e.getSource() == view.getLoginButton()) {
                             checkYourItem();
                             goTo(new MainPlace("MainPlace"));
                         }
@@ -84,8 +84,38 @@ public class LoginActivity implements Activity,LoginView.Presenter {
         );
     }
 
-    public void checkYourItem() {
-        System.out.println("Hello World !");
+    @Override
+    public void resetButtonEvent() {
+
+        view.getResetButton().addActionListener(
+
+                new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource() == view.getResetButton()) {
+                            view.getPasswordField().setText("");
+                            view.getAgeField().setText("");
+                            view.getUserTextField().setText("");
+                            view.getEmailField().setText("");
+                        }
+                    }
+                }
+        );
+    }
+
+    private void checkYourItem() {
+        String username = view.getUserTextField().getText();
+        iValidator.isValidStr(username,"[A-Za-z0-9_]+" );
+
+
+        String email = view.getEmailField().getText();
+        iValidator.isValidStr(email, "^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$");
+
+
+        String str = view.getAgeField().getText();
+        iValidator.isNumeric(str, 120.0);
+
     }
 
 }

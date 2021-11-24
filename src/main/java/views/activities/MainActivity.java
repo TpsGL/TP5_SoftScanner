@@ -4,18 +4,17 @@ import views.activities.kernels.Activity;
 import views.factory.ClientFactory;
 import views.places.MainPlace;
 import views.places.kernels.Place;
-import views.screens.MainView;
+import views.screens.ProductsView;
 
 import javax.swing.*;
 
-public class MainActivity implements Activity, MainView.Presenter {
+public class MainActivity implements Activity, ProductsView.Presenter {
 
     ClientFactory factory;
 
     String name;
 
-    MainView view;
-
+    ProductsView productsView;
 
     public MainActivity(MainPlace mainPlace, ClientFactory clientFactory) {
         this.factory = clientFactory;
@@ -41,15 +40,20 @@ public class MainActivity implements Activity, MainView.Presenter {
 
     @Override
     public void start() {
-        view = factory.getMainView();
 
-        view.setTitle("Crud Product");
-        view.setVisible(true);
-        view.setBounds(10,10,370,600);
-        view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        view.setResizable(false);
+        productsView = factory.getMainView();
 
-        view.setPresenter(this);
+
+        productsView.setTitle("Crud Product");
+
+        productsView.setVisible(true);
+        productsView.setBounds(590,120,800,600);
+
+        productsView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        productsView.setResizable(true);
+
+        productsView.setPresenter(this);
+
         bindEvents();
     }
 

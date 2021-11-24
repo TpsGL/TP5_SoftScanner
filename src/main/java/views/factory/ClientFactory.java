@@ -2,11 +2,11 @@ package views.factory;
 
 
 import views.screens.LoginView;
-import views.screens.MainView;
+import views.screens.ProductsView;
 
 public interface ClientFactory {
 
     LoginView getLoginView();
 
-    MainView getMainView();
+    ProductsView getMainView();
 }
