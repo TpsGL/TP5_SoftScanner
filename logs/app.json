@@ -1,0 +1,41 @@
+[
+{
+  "timeMillis" : 1638269625064,
+  "thread" : "AWT-EventQueue-0",
+  "level" : "INFO",
+  "loggerName" : "GLOBAL",
+  "message" : "{\n  \"Operation Type\": \"CREATE\",\n  \"Approved By\": \"mahi\",\n  \"Product\": {\n    \"price\": \"0.99\",\n    \"name\": \"lait\",\n    \"expiration\": \"12/12/2022\",\n    \"id\": \"f5e07a13-a3b4-40aa-91c3-e9acc8f0d93f\"\n  }\n}",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.log4j.spi.AbstractLogger",
+  "contextMap" : [ ],
+  "threadId" : 19,
+  "threadPriority" : 6,
+  "source" : {
+    "class" : "logger.LoggingHelper",
+    "method" : "log",
+    "file" : "LoggingHelper.java",
+    "line" : 22,
+    "classLoaderName" : "app"
+  }
+}
+, {
+  "timeMillis" : 1638269643400,
+  "thread" : "AWT-EventQueue-0",
+  "level" : "INFO",
+  "loggerName" : "GLOBAL",
+  "message" : "{\n  \"Operation Type\": \"CREATE\",\n  \"Approved By\": \"mahi\",\n  \"Product\": {\n    \"price\": \"1.03\",\n    \"name\": \"jus\",\n    \"expiration\": \"12/12/2021\",\n    \"id\": \"dcc01bf1-f829-4698-98c5-a8c425af72b4\"\n  }\n}",
+  "endOfBatch" : false,
+  "loggerFqcn" : "org.apache.logging.log4j.spi.AbstractLogger",
+  "contextMap" : [ ],
+  "threadId" : 19,
+  "threadPriority" : 6,
+  "source" : {
+    "class" : "logger.LoggingHelper",
+    "method" : "log",
+    "file" : "LoggingHelper.java",
+    "line" : 22,
+    "classLoaderName" : "app"
+  }
+}
+
+]

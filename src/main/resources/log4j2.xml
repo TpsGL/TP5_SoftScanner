@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+
+            <JsonLayout complete="true" compact="false"/>
+
+        </Console>
+
+        <File name="LogToFile" fileName="logs/app.json">
+            <JSONLayout compact="false" locationInfo="true" complete="true" eventEol="true" properties="true" propertiesAsList="true"/>
+        </File>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="TRACE">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="LogToFile" />
+        </Root>
+
+    </Loggers>
+
+</Configuration>
+
